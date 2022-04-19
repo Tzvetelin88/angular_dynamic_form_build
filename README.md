@@ -57,3 +57,8 @@ Angular origin source https://angular.io/guide/dynamic-form, but better implemen
 
 ### Ease way to add styling :) and make Form Group/s with Wizzard or Stepper style, like (docs: https://v3.clarity.design/stepper):
 <img width="887" alt="image" src="https://user-images.githubusercontent.com/9692941/163948688-9efb5406-b6ec-4e96-9323-213770ba2432.png">
+
+
+### Run the project:
+yarn install
+ng serve
