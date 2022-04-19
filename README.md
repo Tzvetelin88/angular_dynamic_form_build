@@ -1,4 +1,4 @@
-# Build Dynamic Angular Form with single or multiple groups from JSON / REST API
+# Build Dynamic Angular Form with single/multiple groups from JSON / REST API
 ## Added custom error messages, custom validators and more...
 
 Angular origin source https://angular.io/guide/dynamic-form, but better implementation here ;)
