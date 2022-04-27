@@ -1,14 +1,16 @@
 export type QuestionBase<T> = {
+  controlType: "textbox" | "checkbox" | "dropdown" | "radiobox";
+  name: string;
+  label: string;
   value?: T | undefined;
-  name?: string;
-  label?: string;
   required?: boolean;
-  order?: number;
-  controlType?: string;
   type?: string;
   options?: { key: string; value: string }[];
   validations?: any[];
+  placeholder?: string;
+  tooltip?: string;
   errorMessage?: string;
+  dependOn?: string | string[];
 };
 
 export type QuestionFormGroups = { [group: string]: QuestionBase<any>[] };

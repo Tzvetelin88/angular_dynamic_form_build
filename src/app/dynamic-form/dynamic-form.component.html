@@ -1,0 +1,34 @@
+<table>
+  <tr>
+    <td style="width: 50%">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div
+          *ngFor="let questionGroup of questionGroups | keyvalue"
+          class="form-row"
+        >
+          <div
+            style="border: 3px dashed black; margin-bottom: 10px; padding: 10px"
+          >
+            <app-question
+              [questionGroup]="questionGroup"
+              [form]="form"
+            ></app-question>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <button type="submit">Save</button>
+        </div>
+      </form>
+    </td>
+    <td style="padding: 50px">
+      <pre><p>{{form.getRawValue() | json}}</p></pre>
+     
+      <div *ngIf="payLoad" class="form-row">
+        <hr/>
+        Form values to be saved:
+        <pre><p>{{payLoad | json}}</p></pre>
+      </div>
+    </td>
+  </tr>
+</table>

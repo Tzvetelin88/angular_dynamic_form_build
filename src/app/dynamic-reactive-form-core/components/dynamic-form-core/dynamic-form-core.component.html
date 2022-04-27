@@ -1,0 +1,56 @@
+<div [formGroup]="form">
+  <div formGroupName="{{ questionGroup.key }}">
+    <p style="color: rgb(0, 0, 214)">
+      This is FormGroup: {{ questionGroup.key }} | Valid:
+      {{ form.get(questionGroup.key)?.valid }}
+    </p>
+
+    <div *ngFor="let question of questionGroup.value" class="question_style">
+      <label [attr.for]="question.name"
+        >{{ question.label }}
+        <div class="tooltip" *ngIf="question.tooltip">
+          I
+          <span class="tooltiptext">{{ question.tooltip }}</span>
+        </div>
+      </label>
+
+      <div [ngSwitch]="question.controlType">
+        <input
+          *ngSwitchCase="'checkbox'"
+          [formControlName]="question.name"
+          [id]="question.name"
+          type="checkbox"
+          [value]="question.value"
+        />
+
+        <input
+          *ngSwitchCase="'textbox'"
+          [formControlName]="question.name"
+          [id]="question.name"
+          [type]="question.type ? question.type : 'text'"
+          [value]="question.value"
+          [placeholder]="question.placeholder"
+          [enableFieldFormControl]="
+            question.dependOn && form.get(question.dependOn)?.value
+          "
+        />
+
+        <select
+          [id]="question.name"
+          *ngSwitchCase="'dropdown'"
+          [formControlName]="question.name"
+          [enableFieldFormControl]="
+            question.dependOn && form.get(question.dependOn)?.value
+          "
+        >
+          <option *ngFor="let opt of question.options" [value]="opt.key">
+            {{ opt.value }}
+          </option>
+        </select>
+      </div>
+      <div class="errorMessage" *ngIf="!isValid(question.name)">
+        {{ question.errorMessage }}
+      </div>
+    </div>
+  </div>
+</div>
